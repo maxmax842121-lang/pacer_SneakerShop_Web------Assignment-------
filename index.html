@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Pacer – Sneakers for every street</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Our CSS file -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <header class="topbar">
+
+    <button class="icon-btn" data-action="menu-open" aria-label="Open menu">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h10M4 17h16"/>
+      </svg>
+    </button>
+
+    <button class="logo" data-action="go" data-page="home" aria-label="Pacer home">
+      <span class="logo-mark"></span>pacer
+    </button>
+
+    <button class="icon-btn cart-btn" data-action="go" data-page="orders" aria-label="Open bag">
+      <svg viewBox="0 0 24 24">
+        <path d="M5 8h14l-1 12H6L5 8z"/>
+        <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+      </svg>
+      <span class="badge" id="cart-count">0</span>
+    </button>
+
+  </header>
+
+  <p class="promo">Free delivery on orders over $75</p>
+
+
+  <main>
+
+    <!-- ===== HOME PAGE ===== -->
+    <section class="page active" id="page-home">
+
+      <div class="hero">
+        <div class="hero-text">
+          <h1>Made for<br>the long<br>way home.</h1>
+          <p>The Glide Runner is back in five new colours. Light foam, grippy sole, built for daily miles.</p>
+          <div class="hero-btns">
+            <button class="btn primary" data-action="add" data-id="1">Add Glide Runner – $120</button>
+            <button class="btn ghost" data-action="go" data-page="search">Browse all</button>
+          </div>
+        </div>
+        <div class="hero-shoe" id="hero-shoe"></div>
+      </div>
+
+      <h2 class="section-title">Shop by category</h2>
+      <div class="cats" id="home-cats"></div>
+
+      <h2 class="section-title">New this week</h2>
+      <div class="grid" id="home-grid"></div>
+
+      <div class="club">
+        <div>
+          <h3>Pacer Club</h3>
+          <p>Earn 1 point for every dollar you spend. 500 points gets you $25 off.</p>
+        </div>
+        <button class="btn light" data-action="go" data-page="profile">View my points</button>
+      </div>
+
+    </section>
+
+
+    <!-- ===== SEARCH PAGE ===== -->
+    <section class="page" id="page-search">
+
+      <h1 class="page-title">Search</h1>
+
+      <div class="search-box">
+        <svg viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m20 20-4-4"/>
+        </svg>
+        <input type="search" id="search-input" placeholder="Try “runner” or “black”" autocomplete="off">
+      </div>
+
+      <div class="chips" id="search-chips"></div>
+      <p class="result-count" id="result-count"></p>
+      <div class="grid" id="search-grid"></div>
+
+    </section>
+
+
+    <!-- ===== ORDERS PAGE ===== -->
+    <section class="page" id="page-orders">
+
+      <h1 class="page-title">Orders</h1>
+
+      <div class="tabs">
+        <button class="tab active" data-action="tab" data-tab="cart">Bag</button>
+        <button class="tab" data-action="tab" data-tab="history">Past orders</button>
+      </div>
+
+      <div id="cart-view"></div>
+      <div id="history-view" hidden></div>
+
+    </section>
+
+
+    <!-- ===== PROFILE PAGE ===== -->
+    <section class="page" id="page-profile">
+
+      <h1 class="page-title">Profile</h1>
+
+      <div class="profile-card">
+        <div class="avatar" id="avatar">GR</div>
+        <div>
+          <h2 id="profile-name">Guest Runner</h2>
+          <p class="muted" id="profile-email">guest@pacer.shop</p>
+        </div>
+      </div>
+
+      <div class="points">
+        <div class="points-top">
+          <span>Club points</span>
+          <strong id="points-num">250</strong>
+        </div>
+        <div class="bar">
+          <div class="bar-fill" id="points-bar"></div>
+        </div>
+        <p class="muted small" id="points-text"></p>
+      </div>
+
+      <h2 class="section-title">Edit details</h2>
+      <div class="form">
+        <label>Name
+          <input id="input-name" type="text">
+        </label>
+        <label>Email
+          <input id="input-email" type="email">
+        </label>
+        <button class="btn primary" data-action="save-profile">Save changes</button>
+      </div>
+
+      <h2 class="section-title">Settings</h2>
+      <div class="settings">
+        <label class="switch-row">Dark mode
+          <input type="checkbox" id="dark-toggle">
+          <span class="switch"></span>
+        </label>
+        <label class="switch-row">Email me about new drops
+          <input type="checkbox" checked>
+          <span class="switch"></span>
+        </label>
+      </div>
+
+      <h2 class="section-title">Wishlist</h2>
+      <div class="grid" id="wish-grid"></div>
+
+    </section>
+
+
+    <!-- ===== INFO PAGE (opened from menu) ===== -->
+    <section class="page" id="page-info">
+      <button class="back" data-action="go" data-page="home">‹ Back to home</button>
+      <div id="info-content"></div>
+    </section>
+
+  </main>
+
+
+  <!-- ===== BOTTOM NAVIGATION ===== -->
+  <nav class="bottom-nav">
+
+    <button class="nav-btn active" data-action="go" data-page="home">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 11 12 4l8 7v9h-5v-6H9v6H4z"/>
+      </svg>
+      Home
+    </button>
+
+    <button class="nav-btn" data-action="go" data-page="search">
+      <svg viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7"/>
+        <path d="m20 20-4-4"/>
+      </svg>
+      Search
+    </button>
+
+    <button class="nav-btn" data-action="go" data-page="orders">
+      <svg viewBox="0 0 24 24">
+        <path d="M5 8h14l-1 12H6L5 8z"/>
+        <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+      </svg>
+      Orders
+    </button>
+
+    <button class="nav-btn" data-action="go" data-page="profile">
+      <svg viewBox="0 0 24 24">
+        <circle cx="12" cy="8" r="4"/>
+        <path d="M4 21c1-5 15-5 16 0"/>
+      </svg>
+      Profile
+    </button>
+
+    <button class="nav-btn" data-action="menu-open">
+      <svg viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+      Menu
+    </button>
+
+  </nav>
+
+
+  <!-- ===== SIDE MENU ===== -->
+  <div class="overlay" id="overlay" data-action="menu-close"></div>
+
+  <aside class="drawer" id="drawer" aria-hidden="true">
+
+    <div class="drawer-head">
+      <span class="logo"><span class="logo-mark"></span>pacer</span>
+      <button class="icon-btn" data-action="menu-close" aria-label="Close menu">
+        <svg viewBox="0 0 24 24">
+          <path d="M6 6l12 12M18 6 6 18"/>
+        </svg>
+      </button>
+    </div>
+
+    <p class="drawer-label">Shop</p>
+    <div id="drawer-cats"></div>
+
+    <p class="drawer-label">Help</p>
+    <button class="drawer-link" data-action="info" data-info="help">Help &amp; FAQ</button>
+    <button class="drawer-link" data-action="info" data-info="returns">Returns</button>
+    <button class="drawer-link" data-action="info" data-info="stores">Find a store</button>
+    <button class="drawer-link" data-action="info" data-info="about">About Pacer</button>
+    <button class="drawer-link signout" data-action="signout">Sign out</button>
+
+  </aside>
+
+
+  <!-- Small pop-up message -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Our JavaScript file -->
+  <script src="script.js"></script>
+
+</body>
+</html>
